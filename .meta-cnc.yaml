@@ -15,6 +15,10 @@ variables:
     description: URI format for Slack webhook
     default: /services/
     type_hint: text
+  - name: profile_name
+    description: Name for Slack HTTP profile
+    default: Slack
+    type_hint: text
   - name: fw_name
     description: Firewall name to prefix log messages with
     default: fw
