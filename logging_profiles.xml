@@ -1,0 +1,32 @@
+<entry name="Slack Outbound Alert">
+    <match-list>
+        <entry name="Slack Outbound Alert">
+            <send-http>
+                <member>{{ profile_name }}</member>
+            </send-http>
+            <log-type>traffic</log-type>
+            <filter>All Logs</filter>
+            <send-to-panorama>no</send-to-panorama>
+        </entry>
+    </match-list>
+</entry>
+<entry name="Slack Default">
+    <match-list>
+        <entry name="wildfire">
+            <send-http>
+                <member>{{ profile_name }}</member>
+            </send-http>
+            <log-type>wildfire</log-type>
+            <filter>( severity geq high )</filter>
+            <send-to-panorama>no</send-to-panorama>
+        </entry>
+        <entry name="threat">
+            <send-http>
+                <member>{{ profile_name }}</member>
+            </send-http>
+            <log-type>threat</log-type>
+            <filter>( severity geq high )</filter>
+            <send-to-panorama>no</send-to-panorama>
+        </entry>
+    </match-list>
+</entry>

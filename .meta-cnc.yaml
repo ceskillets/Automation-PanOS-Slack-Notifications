@@ -1,0 +1,32 @@
+name: SlackNotificationSkillet
+label: Slack Notifications
+description: >
+  Configures HTTP forwarding and logging profiles for a Slack webhook.
+
+type: panos
+extends:
+
+labels:
+  collection:
+    - Automation CE Team
+
+variables:
+  - name: webhook_uri_format
+    description: URI format for Slack webhook
+    default: /services/
+    type_hint: text
+  - name: fw_name
+    description: Firewall name to prefix log messages with
+    default: fw
+    type_hint: text
+
+snippets:
+  - name: http_server_profile
+    xpath: /config/shared/log-settings/http
+    file: http_server_profile.xml
+  - name: system_logs
+    xpath: /config/shared/log-settings/system/match-list
+    file: system_logs.xml
+  - name: logging_profiles
+    xpath: /config/shared/log-settings/profiles
+    file: logging_profiles.xml

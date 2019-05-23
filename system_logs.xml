@@ -1,0 +1,6 @@
+<entry name="Slack System Logs">
+    <filter>(severity geq high)</filter>
+    <send-http>
+        <member>{{ profile_name }}</member>
+    </send-http>
+</entry>

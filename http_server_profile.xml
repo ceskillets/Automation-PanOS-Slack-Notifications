@@ -1,0 +1,56 @@
+<entry name="{{ profile_name }}">
+    <server>
+        <entry name="Slack">
+            <address>hooks.slack.com</address>
+            <http-method>POST</http-method>
+            <protocol>HTTPS</protocol>
+            <port>443</port>
+        </entry>
+    </server>
+    <format>
+        <system>
+            <name>Slack System Logs</name>
+            <url-format>{{ webhook_uri_format }}</url-format>
+            <headers>
+                <entry name="Content-Type">
+                    <value>application/json</value>
+                </entry>
+            </headers>
+            <params/>
+            <payload>{"text": "*{{ fw_name }} System Log*\n*Receive Time*: $receive_time *Severity:* $severity *Type*: $subtype\n*Log Message:* $opaque"}</payload>
+        </system>
+        <threat>
+            <name>Slack Threat Logs</name>
+            <url-format>{{ webhook_uri_format }}</url-format>
+            <headers>
+                <entry name="Content-Type">
+                    <value>application/json</value>
+                </entry>
+            </headers>
+            <params/>
+            <payload>{"text": "*{{ fw_name }} Threat Log*\n*Receive Time:* $receive_time *Type:* $subtype *Name:* $threatid *Source Zone:* $from *Destination Zone:* $to *Source Address:* $src *Source User:* $srcuser *Application:* $app *Action:* $action *Severity:* $severity *File Name:* $misc"}</payload>
+        </threat>
+        <traffic>
+            <name>Slack Traffic Logs</name>
+            <url-format>{{ webhook_uri_format }}</url-format>
+            <headers>
+                <entry name="Content-Type">
+                    <value>application/json</value>
+                </entry>
+            </headers>
+            <params/>
+            <payload>{"text": "*{{ fw_name }} Traffic Log*\n*Receive Time*: $receive_time *Rule:* $rule *Action:* $action *Source Zone:* $from *Destination Zone:* $to *Source Address:* $src *Destination Address:* $dst *Destination Port:* $dport *Application:* $app"}</payload>
+        </traffic>
+        <wildfire>
+            <name>Slack Wildfire Logs</name>
+            <url-format>{{ webhook_uri_format }}</url-format>
+            <headers>
+                <entry name="Content-Type">
+                    <value>application/json</value>
+                </entry>
+            </headers>
+            <params/>
+            <payload>{"text": "*{{ fw_name }} WildFire Log*\n*Receive Time:* $receive_time *File Name:* $misc *File Type:* $filetype *Source Zone:* $from *Destination Zone:* $to *Source Address:* $src *Source User:* $srcuser *Application:* $app *Rule:* $rule *Verdict:* $category *Action:* $action"}</payload>
+        </wildfire>
+    </format>
+</entry>
