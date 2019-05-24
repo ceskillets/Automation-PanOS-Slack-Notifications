@@ -11,9 +11,9 @@ _To be added_
 
 ### Parameters
 
-- *webhook_uri_format*: This is the portion of the generated webhook URL without `https://hooks.slack.com/`.
-- *profile_name*: Name of the HTTP server profile that gets created.
-- *fw_name*: String prefix that gets added to messages posted to the Slack channel.  This is useful if you have multiple 
+- **webhook_uri_format**: This is the portion of the generated webhook URL without `https://hooks.slack.com/`.
+- **profile_name**: Name of the HTTP server profile that gets created.
+- **fw_name**: String prefix that gets added to messages posted to the Slack channel.  This is useful if you have multiple 
   firewalls sending events to a single channel.
 
 ### Outputs
